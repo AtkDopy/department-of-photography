@@ -79,7 +79,7 @@ function Navbar() {
         <div
           id="close"
           onClick={closeNav}
-          className="flex cursor-pointer justify-center mt-12 items-center"
+          className="flex cursor-pointer pb-4 justify-center mt-12 items-center"
         >
           <AiOutlineClose size={50} />
         </div>

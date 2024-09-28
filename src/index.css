@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 body {
-  font-family: "Poppins", system-ui;
+  font-family: "Oswald", sans-serif;
   width: 100vw;
   overflow-x: hidden;
-}
+  }
 
 #slider1{
   background-image: url(assets/slider1.png);
