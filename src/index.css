@@ -6,9 +6,9 @@ body {
   font-family: "Oswald", sans-serif;
   width: 100vw;
   overflow-x: hidden;
-  }
+}
 
-#slider1{
+#slider1 {
   background-image: url(assets/slider1.png);
   background-position: bottom;
   background-size: cover;
@@ -17,8 +17,12 @@ body {
   box-shadow: -15px 15px 0px #83b5b9;
 }
 
-@media (max-width: 639px) { 
-  #slider1{
+.shadow {
+  box-shadow: -10px 10px 0px #83b5b9;
+}
+
+@media (max-width: 639px) {
+  #slider1 {
     aspect-ratio: 1 /2;
     background-position: center;
   }

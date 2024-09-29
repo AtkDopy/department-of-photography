@@ -9,7 +9,7 @@ import { Carousel } from "flowbite-react";
 
 function Hero() {
   return (
-    <div className="px-16 pb-12 flex sm:gap-4 sm:pt-4 flex-col items-center justify-center">
+    <div className="px-16 pb-12 flex pt-28 sm:gap-4 pt-28 flex-col items-center justify-center">
       <div className=" w-[90vw] flex justify-start">
         <img className="w-[40rem]" src={heading} alt="" />
       </div>

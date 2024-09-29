@@ -14,7 +14,7 @@ function Navbar() {
     upNav.classList.add("translate-y-[-100%]");
   };
   return (
-    <div className="flex relative items-center justify-between  md:pt-4 pt-8 md:px-4 sm:px-6 px-12 ">
+    <div className="flex fixed w-full z-[10000] bg-white items-center justify-between pb-4  md:pt-4 pt-8 md:px-4 sm:px-6 px-12 ">
       <div className="cursor-pointer">
         <img className="sm:w-28" src={logo} alt="" />
       </div>
