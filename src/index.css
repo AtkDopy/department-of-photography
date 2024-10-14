@@ -27,3 +27,8 @@ body {
     background-position: center;
   }
 }
+
+.stroke{
+  -webkit-text-stroke: 2px black;
+  color: white;
+}
