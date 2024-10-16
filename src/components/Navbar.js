@@ -1,88 +1,90 @@
+import { useState, useRef, useEffect } from "react";
 import logo from "../assets/logo.svg";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
-import { IoMenu } from "react-icons/io5";
-import { AiOutlineClose } from "react-icons/ai";
 
 function Navbar() {
-  const openNav = () => {
-    const upNav = document.querySelector("#upNav");
-    upNav.classList.remove("translate-y-[-100%]");
-  };
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
-  const closeNav = () => {
-    const upNav = document.querySelector("#upNav");
-    upNav.classList.add("translate-y-[-100%]");
-  };
+  const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
+
+  const closeDropdown = () => setIsDropdownOpen(false);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        closeDropdown();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className="flex fixed w-full z-[10000] bg-white items-center justify-between pb-4  md:pt-4 pt-8 md:px-4 sm:px-6 px-12 ">
+    <div className="flex fixed w-full z-50 bg-white shadow-md items-center justify-between pb-4 md:pt-4 pt-8 md:px-4 sm:px-6 px-12 transition-all duration-300">
+      {/* Logo */}
       <div className="cursor-pointer">
-        <img className="sm:w-28" src={logo} alt="" />
+        <img className="sm:w-28 w-24" src={logo} alt="Logo" />
       </div>
 
-      <div className="font-bold sm:hidden md:text-lg text-xl flex gap-8 md:gap-4 text-black">
-        <a href="https://github.com/ATIKSH09">HOME</a>
-        <a href="https://github.com/ATIKSH09">GALLERY</a>
-        <a href="https://github.com/ATIKSH09">EVENTS</a>
-        <a href="https://github.com/ATIKSH09" className="flex items-center">
-          FESTS <MdOutlineKeyboardArrowDown />
+      {/* Navigation Links */}
+      <div className="font-bold text-xl md:text-lg flex gap-8 md:gap-4 text-black">
+        <a href="https://github.com/ATIKSH09" className="hover:text-gray-600 transition-colors duration-200">
+          HOME
         </a>
-      </div>
-
-      <div>
-        <button className="font-bold sm:hidden md:text-lg text-xl border-black border-2 py-2 px-4 rounded-full">
-          LETS CONNECT
-        </button>
-      </div>
-
-      <div
-        id="open"
-        onClick={openNav}
-        className="hidden cursor-pointer sm:block"
-      >
-        <IoMenu size={40} />
-      </div>
-
-      <div
-        id="upNav"
-        className=" absolute z-[100000] left-0 pt-4 bg-white w-[100%] duration-500 top-0 translate-y-[-100%] flex flex-col"
-      >
-        <div className="font-bold text-xl justify-center items-center flex flex-col gap-8 md:gap-4 text-black">
-          <a
-            className="justify-center border-b-2 w-[80%] border-black items-center flex"
-            href="https://github.com/ATIKSH09"
-          >
-            HOME
-          </a>
-          <hr />
-          <a
-            className="justify-center border-b-2 w-[80%] border-black items-center flex"
-            href="https://github.com/ATIKSH09"
-          >
-            GALLERY
-          </a>
-          <hr />
-          <a
-            className="justify-center border-b-2 w-[80%] border-black items-center flex"
-            href="https://github.com/ATIKSH09"
-          >
-            EVENTS
-          </a>
-          <hr />
-          <a
-            className="justify-center border-b-2 w-[80%] border-black items-center flex"
-            href="https://github.com/ATIKSH09"
+        <a href="https://github.com/ATIKSH09" className="hover:text-gray-600 transition-colors duration-200">
+          GALLERY
+        </a>
+        <a href="https://github.com/ATIKSH09" className="hover:text-gray-600 transition-colors duration-200">
+          EVENTS
+        </a>
+        <div className="relative" ref={dropdownRef}>
+          <button
+            className="flex items-center hover:text-gray-600 transition-colors duration-200"
+            onClick={toggleDropdown}
           >
             FESTS <MdOutlineKeyboardArrowDown />
-          </a>
+          </button>
+          {isDropdownOpen && (
+            <div className="absolute bg-white shadow-lg mt-2 rounded-md z-50 border border-gray-200">
+              <a
+                href="https://github.com/ATIKSH09"
+                className="block px-4 py-2 text-black hover:bg-gray-200 transition-colors duration-200 rounded-md"
+                onClick={closeDropdown}
+              >
+                ATMOS
+              </a>
+              <a
+                href="https://github.com/ATIKSH09"
+                className="block px-4 py-2 text-black hover:bg-gray-200 transition-colors duration-200 rounded-md"
+                onClick={closeDropdown}
+              >
+                ARENA
+              </a>
+              <a
+                href="https://github.com/ATIKSH09"
+                className="block px-4 py-2 text-black hover:bg-gray-200 transition-colors duration-200 rounded-md"
+                onClick={closeDropdown}
+              >
+                PEARL
+              </a>
+            </div>
+          )}
         </div>
+      </div>
 
-        <div
-          id="close"
-          onClick={closeNav}
-          className="flex cursor-pointer pb-4 justify-center mt-12 items-center"
-        >
-          <AiOutlineClose size={50} />
-        </div>
+      {/* "Let's Connect" Button */}
+      <div>
+      <button
+  className="font-bold text-xl lg:text-sm border-black border-2 py-2 px-4 rounded-full hover:bg-black hover:text-white transition-colors duration-200"
+  onClick={() => window.location.href = 'https://www.instagram.com/dopy.bitshyd?igsh=cjNuMmlwbXg2aXFv'}
+>
+  LET'S CONNECT
+</button>
       </div>
     </div>
   );
