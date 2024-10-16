@@ -64,10 +64,10 @@ function Por() {
 
   // Data Array with Updated Titles
   const galleryItems = [
-    { img: img1, title: "Gautam (StuCCAn)" },
-    { img: img2, title: "Rahul (CoSSAcn)" },
-    { img: img3, title: "Atharva (CoStAAn)" },
-    { img: img4, title: "Aruninka (Design & Media Head)" },
+    { img: img1, title: "Gautam Gandhi (StuCCAn)" },
+    { img: img2, title: "Rahul Sharma (CoSSAcn)" },
+    { img: img3, title: "Atharva Wasade(CoStAAn)" },
+    { img: img4, title: "Arunika Srivastava (Design & Media Head)" },
   ];
 
   return (
