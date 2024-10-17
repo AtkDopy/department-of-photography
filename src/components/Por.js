@@ -66,7 +66,7 @@ function Por() {
   const galleryItems = [
     { img: img1, title: "Gautam Gandhi (StuCCAn)" },
     { img: img2, title: "Rahul Sharma (CoSSAcn)" },
-    { img: img3, title: "Atharva Wasade(CoStAAn)" },
+    { img: img3, title: "Atharva Wasade (CoStAAn)" },
     { img: img4, title: "Arunika Srivastava (Design & Media Head)" },
   ];
 
