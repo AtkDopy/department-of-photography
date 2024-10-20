@@ -107,7 +107,7 @@ function Por() {
           animate={controls}
         >
           {/* Desktop/Laptop View: Grid Layout with Cards */}
-          <div className="hidden lg:grid grid-cols-2 md:grid-cols-4 gap-6 justify-center">
+          <div className="hidden lg:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-center">
             {/* Image Cards */}
             {galleryItems.map((item, index) => (
               <motion.div
@@ -118,10 +118,10 @@ function Por() {
                 <img
                   src={item.img}
                   alt={`Gallery Image ${index + 1}`}
-                  className="w-full h-112 object-cover" // Increased height (double the original height)
+                  className="w-full h-80 object-cover" // Adjusted height for consistency
                   loading="lazy"
                 />
-                <div className="p-4"> {/* Increased padding */}
+                <div className="p-6"> {/* Increased padding for balance */}
                   <h2 className="text-xl font-semibold text-gray-700">{item.title}</h2>
                 </div>
               </motion.div>
@@ -129,20 +129,20 @@ function Por() {
           </div>
 
           {/* Mobile View: Horizontal Scroll with Cards */}
-          <div className="lg:hidden flex space-x-4 overflow-x-auto pb-4">
+          <div className="lg:hidden flex space-x-6 overflow-x-auto pb-6">
             {galleryItems.map((item, index) => (
               <motion.div
                 key={index}
-                className="flex-shrink-0 bg-white rounded-lg shadow-lg overflow-hidden w-60"
+                className="flex-shrink-0 bg-white rounded-lg shadow-lg overflow-hidden w-64"
                 variants={cardVariants}
               >
                 <img
                   src={item.img}
                   alt={`Gallery Image ${index + 1}`}
-                  className="w-full h-80 object-cover" // Increased height (double the original height)
+                  className="w-full h-72 object-cover"
                   loading="lazy"
                 />
-                <div className="p-4"> {/* Increased padding */}
+                <div className="p-4">
                   <h2 className="text-lg font-semibold text-gray-700">{item.title}</h2>
                 </div>
               </motion.div>
@@ -153,18 +153,16 @@ function Por() {
 
       {/* Action Button Positioned at Bottom Right */}
       <motion.button
-  className="absolute bottom-60 right-10 z-20 bg-black text-white font-semibold text-lg lg:text-xl py-2 px-6 rounded-full shadow-md hover:bg-gray-800 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
-  variants={buttonVariants}
-  initial="hidden"
-  animate={controls}
-  whileHover={{ scale: 1.05 }}
-  whileTap={{ scale: 0.95 }}
-  onClick={() => window.open("https://your-link.com", "_blank")} // Open the link in a new tab
->
-  View Past POR's
-</motion.button>
-
-
+        className="absolute bottom-20 right-6 z-20 bg-black text-white font-semibold text-lg lg:text-xl py-2 px-6 rounded-full shadow-md hover:bg-gray-800 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+        variants={buttonVariants}
+        initial="hidden"
+        animate={controls}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={() => window.open("https://your-link.com", "_blank")} // Open the link in a new tab
+      >
+        View Past POR's
+      </motion.button>
 
       {/* Decorative Element - Visible on Large Screens */}
       <motion.img
