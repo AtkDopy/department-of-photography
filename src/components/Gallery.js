@@ -220,6 +220,146 @@ function Gallery() {
               loading="lazy"
             />
           </motion.div>
+          <motion.div
+            className="flex-shrink-0 w-64 h-48 overflow-hidden rounded-lg shadow-lg"
+            variants={itemVariants}
+          >
+            <img
+              src={img3}
+              alt="Gallery Image 3"
+              className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+            />
+          </motion.div>
+
+          {/* Image 4 */}
+          <motion.div
+            className="flex-shrink-0 w-64 h-48 overflow-hidden rounded-lg shadow-lg"
+            variants={itemVariants}
+          >
+            <img
+              src={img4}
+              alt="Gallery Image 4"
+              className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+            />
+          </motion.div>
+        </div>
+   
+        <div className="lg:hidden flex space-x-4 overflow-x-auto pb-4">
+          {/* Image 1 */}
+          <motion.div
+            className="flex-shrink-0 w-64 h-48 overflow-hidden rounded-lg shadow-lg"
+            variants={itemVariants}
+          >
+            <img
+              src={img1}
+              alt="Gallery Image 1"
+              className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+            />
+          </motion.div>
+
+          {/* Image 2 */}
+          <motion.div
+            className="flex-shrink-0 w-64 h-48 overflow-hidden rounded-lg shadow-lg"
+            variants={itemVariants}
+          >
+            <img
+              src={img2}
+              alt="Gallery Image 2"
+              className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+            />
+          </motion.div>
+
+          {/* Image 3 */}
+          <motion.div
+            className="flex-shrink-0 w-64 h-48 overflow-hidden rounded-lg shadow-lg"
+            variants={itemVariants}
+          >
+            <img
+              src={img3}
+              alt="Gallery Image 3"
+              className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+            />
+          </motion.div>
+          <motion.div
+            className="flex-shrink-0 w-64 h-48 overflow-hidden rounded-lg shadow-lg"
+            variants={itemVariants}
+          >
+            <img
+              src={img3}
+              alt="Gallery Image 3"
+              className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+            />
+          </motion.div>
+
+          {/* Image 4 */}
+          <motion.div
+            className="flex-shrink-0 w-64 h-48 overflow-hidden rounded-lg shadow-lg"
+            variants={itemVariants}
+          >
+            <img
+              src={img4}
+              alt="Gallery Image 4"
+              className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+            />
+          </motion.div>
+        </div>
+        <div className="lg:hidden flex space-x-4 overflow-x-auto pb-4">
+          {/* Image 1 */}
+          <motion.div
+            className="flex-shrink-0 w-64 h-48 overflow-hidden rounded-lg shadow-lg"
+            variants={itemVariants}
+          >
+            <img
+              src={img1}
+              alt="Gallery Image 1"
+              className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+            />
+          </motion.div>
+
+          {/* Image 2 */}
+          <motion.div
+            className="flex-shrink-0 w-64 h-48 overflow-hidden rounded-lg shadow-lg"
+            variants={itemVariants}
+          >
+            <img
+              src={img2}
+              alt="Gallery Image 2"
+              className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+            />
+          </motion.div>
+
+          {/* Image 3 */}
+          <motion.div
+            className="flex-shrink-0 w-64 h-48 overflow-hidden rounded-lg shadow-lg"
+            variants={itemVariants}
+          >
+            <img
+              src={img3}
+              alt="Gallery Image 3"
+              className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+            />
+          </motion.div>
+          <motion.div
+            className="flex-shrink-0 w-64 h-48 overflow-hidden rounded-lg shadow-lg"
+            variants={itemVariants}
+          >
+            <img
+              src={img3}
+              alt="Gallery Image 3"
+              className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+            />
+          </motion.div>
 
           {/* Image 4 */}
           <motion.div

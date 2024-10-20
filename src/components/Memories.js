@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import img from "../assets/memories.svg";
 import underline from "../assets/underline.svg";
 import highlight from "../assets/Highlight_05.svg";
 import { BsArrowDownRightCircleFill } from "react-icons/bs";
@@ -14,7 +13,7 @@ function Memories() {
   });
 
   return (
-    <div className="px-14 mt-24 flex flex-col gap-8" ref={ref}>
+    <div className="px-4 mt-8 flex flex-col gap-8" ref={ref}>
       {/* Animated text */}
       <motion.div
         className="flex justify-center items-center gap-4 flex-col"
@@ -23,7 +22,7 @@ function Memories() {
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         <motion.h1
-          className="font-extrabold text-9xl tracking-widest"
+          className="font-extrabold text-6xl tracking-widest"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={inView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.7, ease: "easeOut" }}
@@ -31,7 +30,7 @@ function Memories() {
           CREATING MEMORIES
         </motion.h1>
         <motion.h1
-          className="stroke text-6xl tracking-wide"
+          className="stroke text-4xl tracking-wide"
           initial={{ opacity: 0, x: 100 }}
           animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -40,22 +39,22 @@ function Memories() {
         </motion.h1>
       </motion.div>
 
-      <div className="px-6 flex justify-between gap-4">
+      <div className="px-4 flex flex-col justify-center gap-4">
         {/* Animated "ABOUT" box */}
         <motion.div
-          className="bg-[#292524] text-white pl-6 pr-20 py-12 w-[100%} flex flex-col items-end justify-between rounded-xl"
+          className="bg-[#292524] text-white pl-6 pr-4 py-8 w-full flex flex-col items-end justify-between rounded-xl"
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <div className="flex flex-col gap-6 items-start">
+          <div className="flex flex-col gap-4 items-start">
             <motion.div
               className="flex flex-col relative justify-center items-center"
               initial={{ opacity: 0 }}
               animate={inView ? { opacity: 1 } : {}}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <h1 className="text-6xl font-semibold">ABOUT</h1>
+              <h1 className="text-4xl font-semibold">ABOUT</h1>
               <motion.img
                 src={underline}
                 alt=""
@@ -63,11 +62,11 @@ function Memories() {
                 animate={inView ? { scaleX: 1 } : {}}
                 transition={{ duration: 0.6, ease: "easeOut" }}
               />
-              <img className="absolute top-[-30%] left-0" src={highlight} alt="" />
+              <img className="absolute top-[-20%] left-0" src={highlight} alt="" />
             </motion.div>
 
             <motion.p
-              className="text-xl pl-8 tracking-widest"
+              className="text-lg pl-4 tracking-widest"
               initial={{ opacity: 0, x: -100 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -84,16 +83,6 @@ function Memories() {
 
           
         </motion.div>
-
-        {/* Animated image */}
-        <motion.img
-          className="shadow"
-          src={img}
-          alt=""
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={inView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-        />
       </div>
     </div>
   );
