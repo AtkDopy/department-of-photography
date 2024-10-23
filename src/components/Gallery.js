@@ -245,7 +245,6 @@ function Gallery() {
             />
           </motion.div>
         </div>
-   
         <div className="lg:hidden flex space-x-4 overflow-x-auto pb-4">
           {/* Image 1 */}
           <motion.div
