@@ -40,7 +40,7 @@ function Navbar() {
         <Link to="/photogallery" className="hover:text-gray-600 transition-colors duration-200">
           GALLERY
         </Link>
-        <Link to="/" className="hover:text-gray-600 transition-colors duration-200">
+        <Link to="/events" className="hover:text-gray-600 transition-colors duration-200">
           EVENTS
         </Link>
         <div className="relative" ref={dropdownRef}>
@@ -53,21 +53,21 @@ function Navbar() {
           {isDropdownOpen && (
             <div className="absolute bg-white shadow-lg mt-2 rounded-md z-50 border border-gray-200">
               <Link
-                to="/"
+                to="/atmos"
                 className="block px-4 py-2 text-black hover:bg-gray-200 transition-colors duration-200 rounded-md"
                 onClick={closeDropdown}
               >
                 ATMOS
               </Link>
               <Link
-                to="/"
+                to="/arena"
                 className="block px-4 py-2 text-black hover:bg-gray-200 transition-colors duration-200 rounded-md"
                 onClick={closeDropdown}
               >
                 ARENA
               </Link>
               <Link
-                to="/"
+                to="/pearl"
                 className="block px-4 py-2 text-black hover:bg-gray-200 transition-colors duration-200 rounded-md"
                 onClick={closeDropdown}
               >
