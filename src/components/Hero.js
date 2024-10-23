@@ -6,7 +6,7 @@ import s1p2 from "../assets/s1p2.svg";
 import tape1 from "../assets/tape1.svg";
 import tape2 from "../assets/tape2.svg";
 
-// Import background img
+// Import bg img
 import sliderBg1 from "../assets/slider1.png";
 import sliderBg2 from "../assets/slider2.jpg";
 import sliderBg3 from "../assets/slider3.JPG";
