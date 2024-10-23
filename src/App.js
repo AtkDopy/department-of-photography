@@ -1,16 +1,20 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import Gallery from "./components/Gallery";
-import About from "./components/Memories";
-import Por from "./components/Por";
+import Home from "./components/Home";
+import PhotoGallery from "./components/PhotoGallery";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 function App() {
   return (
     <>
-      <Navbar />
-      <Hero />
-      <About />
-      <Por />
-      <Gallery />
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/photogallery" element={<PhotoGallery />} />
+        </Routes>
+      </Router>
+      {/* <PhotoGallery /> */}
     </>
   );
 }

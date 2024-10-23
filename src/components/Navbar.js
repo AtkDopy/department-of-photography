@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import logo from "../assets/logo.svg";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -33,15 +34,15 @@ function Navbar() {
 
       {/* Navigation Links */}
       <div className="font-bold text-xl md:text-lg flex gap-8 md:gap-4 text-black">
-        <a href="https://github.com/ATIKSH09" className="hover:text-gray-600 transition-colors duration-200">
+        <Link to="/" className="hover:text-gray-600 transition-colors duration-200">
           HOME
-        </a>
-        <a href="https://github.com/ATIKSH09" className="hover:text-gray-600 transition-colors duration-200">
+        </Link>
+        <Link to="/photogallery" className="hover:text-gray-600 transition-colors duration-200">
           GALLERY
-        </a>
-        <a href="https://github.com/ATIKSH09" className="hover:text-gray-600 transition-colors duration-200">
+        </Link>
+        <Link to="/" className="hover:text-gray-600 transition-colors duration-200">
           EVENTS
-        </a>
+        </Link>
         <div className="relative" ref={dropdownRef}>
           <button
             className="flex items-center hover:text-gray-600 transition-colors duration-200"
@@ -51,27 +52,27 @@ function Navbar() {
           </button>
           {isDropdownOpen && (
             <div className="absolute bg-white shadow-lg mt-2 rounded-md z-50 border border-gray-200">
-              <a
-                href="https://github.com/ATIKSH09"
+              <Link
+                to="/"
                 className="block px-4 py-2 text-black hover:bg-gray-200 transition-colors duration-200 rounded-md"
                 onClick={closeDropdown}
               >
                 ATMOS
-              </a>
-              <a
-                href="https://github.com/ATIKSH09"
+              </Link>
+              <Link
+                to="/"
                 className="block px-4 py-2 text-black hover:bg-gray-200 transition-colors duration-200 rounded-md"
                 onClick={closeDropdown}
               >
                 ARENA
-              </a>
-              <a
-                href="https://github.com/ATIKSH09"
+              </Link>
+              <Link
+                to="/"
                 className="block px-4 py-2 text-black hover:bg-gray-200 transition-colors duration-200 rounded-md"
                 onClick={closeDropdown}
               >
                 PEARL
-              </a>
+              </Link>
             </div>
           )}
         </div>
