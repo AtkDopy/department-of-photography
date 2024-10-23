@@ -7,7 +7,7 @@ import img1 from "../assets/gallery/img1.svg";
 import img2 from "../assets/gallery/img2.svg";
 import img3 from "../assets/gallery/img3.svg";
 import img4 from "../assets/gallery/img4.svg";
-//import img5 from "../assets/gallery/img5.svg"; // Added extra images to make the gallery more dynamic
+//import img5 from "../assets/gallery/img5.svg"; // Added extra img to make the gallery more dynamic
 //import img6 from "../assets/gallery/img6.svg";
 
 function Gallery() {
