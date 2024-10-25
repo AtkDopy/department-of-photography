@@ -1,25 +1,25 @@
 import React, { useState } from "react";
 // Importing images individually
-import img1 from "../assets/photo_gallery/1.jpg";
-import img2 from "../assets/photo_gallery/2.JPG";
+import img1 from "../assets/photo_gallery/1.JPG";
+import img2 from "../assets/photo_gallery/2.jpg";
 import img3 from "../assets/photo_gallery/3.jpg";
 import img4 from "../assets/photo_gallery/4.jpg";
 import img5 from "../assets/photo_gallery/5.jpg";
-import img6 from "../assets/photo_gallery/6.JPG";
-import img7 from "../assets/photo_gallery/7.JPG";
+import img6 from "../assets/photo_gallery/6.jpg";
+import img7 from "../assets/photo_gallery/7.png";
 import img8 from "../assets/photo_gallery/8.jpg";
 import img9 from "../assets/photo_gallery/9.jpg";
-import img10 from "../assets/photo_gallery/10.JPG";
+import img10 from "../assets/photo_gallery/10.jpeg";
 import img11 from "../assets/photo_gallery/11.jpg";
 import img12 from "../assets/photo_gallery/12.jpg";
 import img13 from "../assets/photo_gallery/13.jpg";
 import img14 from "../assets/photo_gallery/14.jpg";
 import img15 from "../assets/photo_gallery/15.jpg";
 import img16 from "../assets/photo_gallery/16.jpg";
-import img17 from "../assets/photo_gallery/17.jpg";
+import img17 from "../assets/photo_gallery/17.png";
 import img18 from "../assets/photo_gallery/18.jpg";
 import img19 from "../assets/photo_gallery/19.jpg";
-import img20 from "../assets/photo_gallery/20.jpg";
+import img20 from "../assets/photo_gallery/20.JPG";
 
 // Adding them to an array for easier use
 const images = [
