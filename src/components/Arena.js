@@ -51,8 +51,11 @@ function Arena() {
       {/* Centered Heading */}
       <div className="text-center mb-8">
         <h1 className="text-5xl font-extrabold text-gray-800 animate-fadeInUp">
-          Explore Our Photo Gallery
+          Arena
         </h1>
+        <p className="text-lg text-gray-600 animate-fadeInUp">
+            Our Sports Fest 
+        </p>
         {/* View All Button placed below heading */}
         <button className="mt-4 px-6 py-2 bg-gradient-to-r from-blue-500 to-teal-500 text-white text-lg font-semibold rounded-full shadow-md hover:shadow-lg hover:scale-105 transform transition duration-300 ease-in-out animate-fadeIn">
           View All
