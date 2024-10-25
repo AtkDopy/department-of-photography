@@ -28,9 +28,9 @@ function Navbar() {
   return (
     <div className="flex fixed w-full z-50 bg-white shadow-md items-center justify-between pb-4 md:pt-4 pt-8 md:px-4 sm:px-6 px-12 transition-all duration-300">
       {/* Logo */}
-      <div className="cursor-pointer">
+      <Link to="/" className="cursor-pointer">
         <img className="sm:w-28 w-24" src={logo} alt="Logo" />
-      </div>
+      </Link>
 
       {/* Navigation Links */}
       <div className="font-bold text-xl md:text-lg flex gap-8 md:gap-4 text-black">
@@ -80,12 +80,12 @@ function Navbar() {
 
       {/* "Let's Connect" Button */}
       <div>
-      <button
-  className="font-bold text-xl lg:text-sm border-black border-2 py-2 px-4 rounded-full hover:bg-black hover:text-white transition-colors duration-200"
-  onClick={() => window.location.href = 'https://www.instagram.com/dopy.bitshyd?igsh=cjNuMmlwbXg2aXFv'}
->
-  LET'S CONNECT
-</button>
+        <button
+          className="font-bold text-xl lg:text-sm border-black border-2 py-2 px-4 rounded-full hover:bg-black hover:text-white transition-colors duration-200"
+          onClick={() => window.location.href = 'https://www.instagram.com/dopy.bitshyd?igsh=cjNuMmlwbXg2aXFv'}
+        >
+          LET'S CONNECT
+        </button>
       </div>
     </div>
   );
