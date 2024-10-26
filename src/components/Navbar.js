@@ -8,17 +8,14 @@ function Navbar() {
   const dropdownRef = useRef(null);
 
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
-
   const closeDropdown = () => setIsDropdownOpen(false);
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         closeDropdown();
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
@@ -26,14 +23,14 @@ function Navbar() {
   }, []);
 
   return (
-    <div className="flex fixed w-full z-50 bg-white shadow-md items-center justify-between pb-4 md:pt-4 pt-8 md:px-4 sm:px-6 px-12 transition-all duration-300">
+    <div className="flex fixed w-full z-50 bg-white shadow-md items-center justify-between py-4 md:py-2 px-8 md:px-4 transition-all duration-300">
       {/* Logo */}
       <Link to="/" className="cursor-pointer">
-        <img className="sm:w-28 w-24" src={logo} alt="Logo" />
+        <img className="sm:w-24 w-20" src={logo} alt="Logo" />
       </Link>
 
       {/* Navigation Links */}
-      <div className="font-bold text-xl md:text-lg flex gap-8 md:gap-4 text-black">
+      <div className="font-medium text-lg md:text-base flex gap-6 md:gap-3 text-black">
         <Link to="/booking" className="hover:text-gray-600 transition-colors duration-200">
           BOOKING
         </Link>
@@ -51,24 +48,24 @@ function Navbar() {
             FESTS <MdOutlineKeyboardArrowDown />
           </button>
           {isDropdownOpen && (
-            <div className="absolute bg-white shadow-lg mt-2 rounded-md z-50 border border-gray-200">
+            <div className="absolute bg-white shadow-lg mt-2 rounded-md z-50 border border-gray-200 w-32">
               <Link
                 to="/atmos"
-                className="block px-4 py-2 text-black hover:bg-gray-200 transition-colors duration-200 rounded-md"
+                className="block px-4 py-2 text-sm text-black hover:bg-gray-200 transition-colors duration-200 rounded-md"
                 onClick={closeDropdown}
               >
                 ATMOS
               </Link>
               <Link
                 to="/arena"
-                className="block px-4 py-2 text-black hover:bg-gray-200 transition-colors duration-200 rounded-md"
+                className="block px-4 py-2 text-sm text-black hover:bg-gray-200 transition-colors duration-200 rounded-md"
                 onClick={closeDropdown}
               >
                 ARENA
               </Link>
               <Link
                 to="/pearl"
-                className="block px-4 py-2 text-black hover:bg-gray-200 transition-colors duration-200 rounded-md"
+                className="block px-4 py-2 text-sm text-black hover:bg-gray-200 transition-colors duration-200 rounded-md"
                 onClick={closeDropdown}
               >
                 PEARL
@@ -81,7 +78,7 @@ function Navbar() {
       {/* "Let's Connect" Button */}
       <div>
         <button
-          className="font-bold text-xl lg:text-sm border-black border-2 py-2 px-4 rounded-full hover:bg-black hover:text-white transition-colors duration-200"
+          className="font-medium text-lg md:text-sm border-black border-2 py-2 px-4 rounded-full hover:bg-black hover:text-white transition-colors duration-200"
           onClick={() => window.location.href = 'https://www.instagram.com/dopy.bitshyd?igsh=cjNuMmlwbXg2aXFv'}
         >
           LET'S CONNECT

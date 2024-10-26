@@ -21,7 +21,6 @@ import img18 from "../assets/photo_gallery/18.jpg";
 import img19 from "../assets/photo_gallery/19.jpg";
 import img20 from "../assets/photo_gallery/20.JPG";
 
-// Adding them to an array for easier use
 const images = [
   img1, img2, img3, img4, img5,
   img6, img7, img8, img9, img10,
@@ -30,16 +29,14 @@ const images = [
 ];
 
 function PhotoGallery() {
-  const [selectedImage, setSelectedImage] = useState(null); // State for the selected image
-  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Function to open the modal and set the selected image
   const openModal = (image) => {
     setSelectedImage(image);
     setIsModalOpen(true);
   };
 
-  // Function to close the modal
   const closeModal = () => {
     setIsModalOpen(false);
     setSelectedImage(null);
@@ -47,15 +44,12 @@ function PhotoGallery() {
 
   return (
     <div className="atk-div pt-32">
-
-      {/* Centered Heading */}
       <div className="text-center mb-8">
         <h1 className="text-5xl font-extrabold text-gray-800 animate-fadeInUp">
           Explore Our Photo Gallery
         </h1>
-        {/* View All Button placed below heading */}
         <button
-          onClick={() => window.location.href = 'https://drive.google.com/drive/u/1/folders/13pVOvHZXfwz6JLO4VttPvqrDhaB-PCbd'} // Redirect on button click
+          onClick={() => window.location.href = 'https://drive.google.com/drive/u/1/folders/13pVOvHZXfwz6JLO4VttPvqrDhaB-PCbd'}
           className="mt-4 px-6 py-2 bg-gradient-to-r from-blue-500 to-teal-500 text-white text-lg font-semibold rounded-full shadow-md hover:shadow-lg hover:scale-105 transform transition duration-300 ease-in-out animate-fadeIn"
         >
           View All
@@ -68,10 +62,10 @@ function PhotoGallery() {
           <div
             key={index}
             className="relative overflow-hidden rounded-lg shadow-lg transform transition duration-500 hover:scale-105"
-            onClick={() => openModal(e)} // Set the image when clicked
+            onClick={() => openModal(e)}
           >
             <img
-              className="w-full h-64 object-cover transition duration-500 ease-in-out cursor-pointer"
+              className="w-full h-80 object-cover transition duration-500 ease-in-out cursor-pointer" // Increased height to h-80
               src={e}
               alt={`gallery-img-${index}`}
             />
@@ -84,16 +78,16 @@ function PhotoGallery() {
       {isModalOpen && (
         <div
           className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-75"
-          onClick={closeModal} // Close modal when clicking outside the image
+          onClick={closeModal}
         >
           <div className="relative">
             <img
               src={selectedImage}
               alt="Selected"
-              className="max-w-full max-h-screen object-contain"
+              className="max-w-3xl max-h-screen object-contain" // Adjusted max width
             />
             <button
-              onClick={closeModal} // Close modal on button click
+              onClick={closeModal}
               className="absolute top-0 right-0 mt-4 mr-4 text-white bg-red-500 px-4 py-2 rounded-full shadow-lg hover:bg-red-600 transition duration-300 ease-in-out"
             >
               Close
