@@ -34,8 +34,8 @@ function Navbar() {
 
       {/* Navigation Links */}
       <div className="font-bold text-xl md:text-lg flex gap-8 md:gap-4 text-black">
-        <Link to="/" className="hover:text-gray-600 transition-colors duration-200">
-          HOME
+        <Link to="/booking" className="hover:text-gray-600 transition-colors duration-200">
+          BOOKING
         </Link>
         <Link to="/photogallery" className="hover:text-gray-600 transition-colors duration-200">
           GALLERY
