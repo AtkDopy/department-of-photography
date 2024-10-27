@@ -1,27 +1,26 @@
 import React, { useState } from "react";
-// Importing images individually
-import img1 from "../assets/photo_gallery/1.JPG";
-import img2 from "../assets/photo_gallery/2.jpg";
-import img3 from "../assets/photo_gallery/3.jpg";
-import img4 from "../assets/photo_gallery/4.jpg";
-import img5 from "../assets/photo_gallery/5.jpg";
-import img6 from "../assets/photo_gallery/6.jpg";
-import img7 from "../assets/photo_gallery/7.png";
-import img8 from "../assets/photo_gallery/8.jpg";
-import img9 from "../assets/photo_gallery/9.jpg";
-import img10 from "../assets/photo_gallery/10.jpeg";
-import img11 from "../assets/photo_gallery/11.jpg";
-import img12 from "../assets/photo_gallery/12.jpg";
-import img13 from "../assets/photo_gallery/13.jpg";
-import img14 from "../assets/photo_gallery/14.jpg";
-import img15 from "../assets/photo_gallery/15.jpg";
-import img16 from "../assets/photo_gallery/16.jpg";
-import img17 from "../assets/photo_gallery/17.png";
-import img18 from "../assets/photo_gallery/18.jpg";
-import img19 from "../assets/photo_gallery/19.jpg";
-import img20 from "../assets/photo_gallery/20.JPG";
+import { Link } from "react-router-dom"; // Import Link
+import img1 from "../assets/arena/1.jpg";
+import img2 from "../assets/arena/2.JPG";
+import img3 from "../assets/arena/3.JPG";
+import img4 from "../assets/arena/4.jpg";
+import img5 from "../assets/arena/5.JPG";
+import img6 from "../assets/arena/6.JPG";
+import img7 from "../assets/arena/7.JPG";
+import img8 from "../assets/arena/8.jpg";
+import img9 from "../assets/arena/9.JPG";
+import img10 from "../assets/arena/10.JPG";
+import img11 from "../assets/arena/11.JPG";
+import img12 from "../assets/arena/12.jpg";
+import img13 from "../assets/arena/13.JPG";
+import img14 from "../assets/arena/14.JPG";
+import img15 from "../assets/arena/15.JPG";
+import img16 from "../assets/arena/16.JPG";
+import img17 from "../assets/arena/17.JPG";
+import img18 from "../assets/arena/18.jpg";
+import img19 from "../assets/arena/19.JPG";
+import img20 from "../assets/arena/20.JPG";
 
-// Adding them to an array for easier use
 const images = [
   img1, img2, img3, img4, img5,
   img6, img7, img8, img9, img10,
@@ -30,16 +29,14 @@ const images = [
 ];
 
 function Arena() {
-  const [selectedImage, setSelectedImage] = useState(null); // State for the selected image
-  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Function to open the modal and set the selected image
   const openModal = (image) => {
     setSelectedImage(image);
     setIsModalOpen(true);
   };
 
-  // Function to close the modal
   const closeModal = () => {
     setIsModalOpen(false);
     setSelectedImage(null);
@@ -47,19 +44,18 @@ function Arena() {
 
   return (
     <div className="atk-div pt-32">
-
-      {/* Centered Heading */}
       <div className="text-center mb-8">
         <h1 className="text-5xl font-extrabold text-gray-800 animate-fadeInUp">
           Arena
         </h1>
         <p className="text-lg text-gray-600 animate-fadeInUp">
-            Our Sports Fest 
+          Sports Fest of BITS Hyderabad
         </p>
-        {/* View All Button placed below heading */}
-        <button className="mt-4 px-6 py-2 bg-gradient-to-r from-blue-500 to-teal-500 text-white text-lg font-semibold rounded-full shadow-md hover:shadow-lg hover:scale-105 transform transition duration-300 ease-in-out animate-fadeIn">
-          View All
-        </button>
+        <Link to="https://drive.google.com/drive/folders/1VK6-v9q8RC-9dY83TSx99_XiITCjBKuM?usp=sharing">
+          <button className="mt-4 px-6 py-2 bg-gradient-to-r from-blue-500 to-teal-500 text-white text-lg font-semibold rounded-full shadow-md hover:shadow-lg hover:scale-105 transform transition duration-300 ease-in-out animate-fadeIn">
+            View All
+          </button>
+        </Link>
       </div>
 
       {/* Image Grid */}
@@ -68,10 +64,10 @@ function Arena() {
           <div
             key={index}
             className="relative overflow-hidden rounded-lg shadow-lg transform transition duration-500 hover:scale-105"
-            onClick={() => openModal(e)} // Set the image when clicked
+            onClick={() => openModal(e)}
           >
             <img
-              className="w-full h-64 object-cover transition duration-500 ease-in-out cursor-pointer"
+              className="w-full h-80 object-cover transition duration-500 ease-in-out cursor-pointer" // Increased height to h-80
               src={e}
               alt={`gallery-img-${index}`}
             />
@@ -84,16 +80,16 @@ function Arena() {
       {isModalOpen && (
         <div
           className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-75"
-          onClick={closeModal} // Close modal when clicking outside the image
+          onClick={closeModal}
         >
           <div className="relative">
             <img
               src={selectedImage}
               alt="Selected"
-              className="max-w-full max-h-screen object-contain"
+              className="max-w-3xl max-h-screen object-contain" // Sets a max width for larger display
             />
             <button
-              onClick={closeModal} // Close modal on button click
+              onClick={closeModal}
               className="absolute top-0 right-0 mt-4 mr-4 text-white bg-red-500 px-4 py-2 rounded-full shadow-lg hover:bg-red-600 transition duration-300 ease-in-out"
             >
               Close

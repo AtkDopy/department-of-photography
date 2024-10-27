@@ -152,6 +152,7 @@ function Por() {
       </motion.div>
 
       {/* Action Button Positioned at Bottom Right */}
+      {/*
       <motion.button
         className="absolute bottom-20 right-6 z-20 bg-black text-white font-semibold text-lg lg:text-xl py-2 px-6 rounded-full shadow-md hover:bg-gray-800 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
         variants={buttonVariants}
@@ -159,11 +160,11 @@ function Por() {
         animate={controls}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        onClick={() => window.open("https://your-link.com", "_blank")} // Open the link in a new tab
+        onClick={() => window.open("/", "_blank")} // Open the link in a new tab
       >
         View Past POR's
       </motion.button>
-
+      */}
       {/* Decorative Element - Visible on Large Screens */}
       <motion.img
         src={decorativeElement}
