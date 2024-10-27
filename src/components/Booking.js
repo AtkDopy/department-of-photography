@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
+import bookingBg from "../assets/booking.jpg";
 
 function BookingForm() {
   const [formData, setFormData] = useState({
@@ -69,9 +70,16 @@ function BookingForm() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4 sm:p-12">
+    <div
+      className="flex justify-center items-center min-h-screen bg-cover bg-center p-4 sm:p-12"
+      style={{
+        backgroundImage: `url(${bookingBg})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <form
-        className="bg-white p-8 rounded-lg shadow-xl max-w-lg w-full animate-fadeIn space-y-5"
+        className="bg-white bg-opacity-80 p-8 rounded-lg shadow-xl max-w-lg w-full animate-fadeIn space-y-5"
         onSubmit={handleSubmit}
       >
         <br />
@@ -79,6 +87,7 @@ function BookingForm() {
         <h2 className="text-3xl font-extrabold text-center text-gray-800 mb-6">
           Reserve Our Photography Services
         </h2>
+
         <input
           type="text"
           name="clubName"
@@ -97,6 +106,9 @@ function BookingForm() {
           required
           className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
         />
+
+        {/* Label for datetime-local input to replace placeholder */}
+        <label className="text-gray-600 font-medium block mb-1">Event Date & Time</label>
         <input
           type="datetime-local"
           name="time"
@@ -105,6 +117,7 @@ function BookingForm() {
           required
           className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
         />
+
         <input
           type="text"
           name="venue"
