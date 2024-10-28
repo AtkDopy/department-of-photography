@@ -1,19 +1,19 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import img1 from "../assets/gallery/img1.svg";
-import img2 from "../assets/gallery/img2.svg";
-import img3 from "../assets/gallery/img3.svg";
-import img4 from "../assets/gallery/img4.svg";
+import img1 from "../assets/events/FreshersFair.jpg";
+import img2 from "../assets/atmos/1.jpg";
+import img3 from "../assets/arena/9.JPG";
+import img4 from "../assets/pearl/1.jpg";
 
 function GalleryCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const images = [
-    { src: img1, alt: "Events", link: "/events" },
-    { src: img2, alt: "Atmos", link: "/atmos" },
-    { src: img3, alt: "Arena", link: "/arena" },
-    { src: img4, alt: "Pearl", link: "/pearl" },
+    { src: img1, alt: "Explore Events", link: "/events" },
+    { src: img2, alt: "Explore Atmos", link: "/atmos" },
+    { src: img3, alt: "Explore Arena", link: "/arena" },
+    { src: img4, alt: "Explore Pearl", link: "/pearl" },
   ];
 
   useEffect(() => {
@@ -39,7 +39,10 @@ function GalleryCarousel() {
       <div className="relative w-full max-w-5xl">
         <motion.div
           className="relative w-full h-96 overflow-hidden rounded-lg shadow-lg"
-          style={{ transform: `scale(1.1)` }} // Add a slight zoom effect
+          style={{ transform: `scale(1.1)` }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
         >
           <a href={images[currentIndex].link} target="_blank" rel="noopener noreferrer">
             <img
@@ -48,7 +51,9 @@ function GalleryCarousel() {
               className="w-full h-full object-cover rounded-lg"
               loading="lazy"
             />
-            <h2 className="absolute top-0 left-0 p-4 bg-black bg-opacity-50 text-white font-bold">{images[currentIndex].alt}</h2>
+            <h2 className="absolute inset-0 flex items-center justify-center text-3xl lg:text-4xl font-bold text-white bg-black bg-opacity-40 transition-opacity duration-700 ease-in-out">
+              {images[currentIndex].alt}
+            </h2>
           </a>
         </motion.div>
       </div>
@@ -57,7 +62,7 @@ function GalleryCarousel() {
         className="mt-12 bg-black text-white font-semibold text-lg lg:text-xl py-4 px-10 rounded-full shadow-md hover:bg-gray-800 transition-colors duration-300"
         onClick={() => (window.location.href = "/photogallery")}
       >
-        View Full Collection
+        View Gallery
       </button>
     </section>
   );

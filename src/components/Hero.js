@@ -7,16 +7,19 @@ import tape1 from "../assets/tape1.svg";
 import tape2 from "../assets/tape2.svg";
 
 // Import bg img
-import sliderBg1 from "../assets/slider1.png";
-import sliderBg2 from "../assets/slider2.jpg";
-import sliderBg3 from "../assets/slider3.JPG";
+import sliderBg1 from "../assets/photo_gallery/23.JPG";
+import sliderBg2 from "../assets/photo_gallery/28.jpg";
+import sliderBg3 from "../assets/photo_gallery/27.JPG";
+import sliderBg4 from "../assets/photo_gallery/1.JPG";
+import sliderBg5 from "../assets/slider2.jpg";
+import sliderBg6 from "../assets/slider3.JPG";
 
 function Hero() {
   // Image carousel state
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   // Background Images Array
-  const backgroundImages = [sliderBg1, sliderBg2, sliderBg3];
+  const backgroundImages = [sliderBg1, sliderBg2, sliderBg3, sliderBg4, sliderBg5, sliderBg6];
 
   // State to track current background image index
   const [currentBackgroundIndex, setCurrentBackgroundIndex] = useState(0);

@@ -20,12 +20,23 @@ import img17 from "../assets/photo_gallery/17.png";
 import img18 from "../assets/photo_gallery/18.jpg";
 import img19 from "../assets/photo_gallery/19.jpg";
 import img20 from "../assets/photo_gallery/20.JPG";
+import img21 from "../assets/photo_gallery/21.jpg";
+import img22 from "../assets/photo_gallery/22.jpg";
+import img23 from "../assets/photo_gallery/23.JPG";
+import img24 from "../assets/photo_gallery/24.jpg";
+import img25 from "../assets/photo_gallery/25.jpg";
+import img26 from "../assets/photo_gallery/26.JPG";
+import img27 from "../assets/photo_gallery/27.JPG";
+import img28 from "../assets/photo_gallery/28.jpg";
+import img29 from "../assets/photo_gallery/29.jpg";
 
 const images = [
   img1, img2, img3, img4, img5,
   img6, img7, img8, img9, img10,
   img11, img12, img13, img14, img15,
-  img16, img17, img18, img19, img20
+  img16, img17, img18, img19, img20,
+  img21, img22, img23, img24, img25,
+  img26, img27, img28, img29
 ];
 
 function PhotoGallery() {
