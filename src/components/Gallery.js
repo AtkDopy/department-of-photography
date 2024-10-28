@@ -1,127 +1,66 @@
 "use client";
-import React, { useEffect } from "react";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import img1 from "../assets/gallery/img1.svg";
 import img2 from "../assets/gallery/img2.svg";
 import img3 from "../assets/gallery/img3.svg";
 import img4 from "../assets/gallery/img4.svg";
 
-function Gallery() {
-  const controls = useAnimation();
-  const [ref, inView] = useInView({
-    threshold: 0.2,
-    triggerOnce: true,
-  });
-
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    }
-  }, [controls, inView]);
-
-  const containerVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
-      },
-    },
-  };
+function GalleryCarousel() {
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const images = [
-    { src: img1, alt: "Gallery Image 1", link: "https://example.com/image1" },
-    { src: img2, alt: "Gallery Image 2", link: "https://example.com/image2" },
-    { src: img3, alt: "Gallery Image 3", link: "https://example.com/image3" },
-    { src: img4, alt: "Gallery Image 4", link: "https://example.com/image4" },
-    { src: img2, alt: "Gallery Image 5", link: "https://example.com/image5" },
-    { src: img4, alt: "Gallery Image 6", link: "https://example.com/image6" },
+    { src: img1, alt: "Events", link: "/events" },
+    { src: img2, alt: "Atmos", link: "/atmos" },
+    { src: img3, alt: "Arena", link: "/arena" },
+    { src: img4, alt: "Pearl", link: "/pearl" },
   ];
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 3000); // Change every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
   return (
-    <section
-      ref={ref}
-      className="relative w-full min-h-screen flex flex-col items-center justify-center px-4 lg:px-16 py-20 bg-gradient-to-b from-gray-100 to-gray-200 overflow-hidden"
-    >
-      <motion.div
-        className="relative z-10 mb-12 text-center"
-        variants={containerVariants}
-        initial="hidden"
-        animate={controls}
-      >
-        <motion.h1
-          className="font-extrabold text-4xl lg:text-6xl text-gray-800"
-          variants={itemVariants}
-        >
+    <section className="relative w-full min-h-screen flex flex-col items-center justify-center px-4 lg:px-16 py-20 bg-gradient-to-b from-gray-100 to-gray-200 overflow-hidden">
+      <div className="relative z-10 mb-12 text-center">
+        <h1 className="font-extrabold text-4xl lg:text-6xl text-gray-800">
           Our Stunning Gallery
-        </motion.h1>
-        <motion.p
-          className="mt-4 text-lg lg:text-xl text-gray-600"
-          variants={itemVariants}
-        >
+        </h1>
+        <p className="mt-4 text-lg lg:text-xl text-gray-600">
           Explore the stories we capture, one image at a time.
-        </motion.p>
-      </motion.div>
+        </p>
+      </div>
 
-      <motion.div
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl w-full"
-        variants={containerVariants}
-        initial="hidden"
-        animate={controls}
-      >
-        {images.map((image, index) => (
-          <motion.a
-            key={index}
-            href={image.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative overflow-hidden rounded-lg shadow-lg group w-full"
-            variants={itemVariants}
-          >
-            <div className="relative w-full h-64 lg:h-96">
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out"
-                loading="lazy"
-              />
-            </div>
+      {/* Carousel Container */}
+      <div className="relative w-full max-w-5xl">
+        <motion.div
+          className="relative w-full h-96 overflow-hidden rounded-lg shadow-lg"
+          style={{ transform: `scale(1.1)` }} // Add a slight zoom effect
+        >
+          <a href={images[currentIndex].link} target="_blank" rel="noopener noreferrer">
+            <img
+              src={images[currentIndex].src}
+              alt={images[currentIndex].alt}
+              className="w-full h-full object-cover rounded-lg"
+              loading="lazy"
+            />
+            <h2 className="absolute top-0 left-0 p-4 bg-black bg-opacity-50 text-white font-bold">{images[currentIndex].alt}</h2>
+          </a>
+        </motion.div>
+      </div>
 
-            <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition duration-300 ease-in-out flex items-center justify-center">
-              <span className="text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                {image.alt}
-              </span>
-            </div>
-          </motion.a>
-        ))}
-      </motion.div>
-
-      <motion.button
+      <button
         className="mt-12 bg-black text-white font-semibold text-lg lg:text-xl py-4 px-10 rounded-full shadow-md hover:bg-gray-800 transition-colors duration-300"
-        variants={itemVariants}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
         onClick={() => (window.location.href = "/photogallery")}
       >
         View Full Collection
-      </motion.button>
+      </button>
     </section>
   );
 }
 
-export default Gallery;
+export default GalleryCarousel;

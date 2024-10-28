@@ -49,14 +49,14 @@ function Hero() {
     <div className="px-16 pb-12 flex pt-28 sm:gap-4 flex-col items-center justify-center">
       
       {/* Heading Image with Fade-in Animation */}
-      <div className="w-[90vw] flex justify-start">
-        <img
-          className="w-[40rem] animate-fadeIn opacity-0 transition-opacity duration-1000"
-          src={heading}
-          alt="Heading"
-        />
-      </div>
-
+      <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-gray-800 animate-fadeInUp transform transition-all duration-700 ease-out mt-6 tracking-tight">
+  DoPY <span className="text-blue-500">BITS Hyderabad</span>
+</h1>
+<h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-600 animate-fadeInUp transform transition-all duration-700 ease-out delay-200">
+  Department of Photography, BITS Pilani Hyderabad Campus
+</h2>
+<br/>
+<br/>
       {/* Carousel and Tapes */}
       <div
         id="slider1"

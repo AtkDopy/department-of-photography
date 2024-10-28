@@ -1,9 +1,9 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-// Import your images
 import galleryBg from "../assets/gallery/gallerybg.svg";
 import img1 from "../assets/por122.jpg";
 import img2 from "../assets/por222.JPG";
@@ -12,57 +12,13 @@ import img4 from "../assets/por422.jpg";
 import decorativeElement from "../assets/gallery/02.svg";
 
 function Por() {
-  // Intersection Observer for triggering animations
   const controls = useAnimation();
   const [ref, inView] = useInView({
-    threshold: 0.2, // Trigger when 20% of the component is visible
-    triggerOnce: true, // Only trigger once
+    threshold: 0.2,
+    triggerOnce: true,
   });
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    }
-  }, [controls, inView]);
-
-  // Animation Variants
-  const containerVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, scale: 0.8, y: 50 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const buttonVariants = {
-    hidden: { opacity: 0, x: 50 }, // Adjusted for right placement
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  // Data Array with Updated Titles
   const galleryItems = [
     { img: img1, title: "Gautam Gandhi (StuCCAn)" },
     { img: img2, title: "Rahul Sharma (CoSSAcn)" },
@@ -70,111 +26,167 @@ function Por() {
     { img: img4, title: "Arunika Srivastava (Design & Media Head)" },
   ];
 
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 4110);
+
+    return () => clearInterval(interval);
+  }, [controls, inView]);
+
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === galleryItems.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? galleryItems.length - 1 : prevIndex - 1
+    );
+  };
+
+  const getDisplayedImages = () => {
+    const prevIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+    const nextIndex = (currentIndex + 1) % galleryItems.length;
+    return [
+      galleryItems[prevIndex],
+      galleryItems[currentIndex],
+      galleryItems[nextIndex],
+    ];
+  };
+
+  const containerVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { staggerChildren: 0.2 },
+    },
+  };
+
+  const slideVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { opacity: 1, scale: 1 },
+  };
+
+  const smallSlideStyle = "w-40 h-40 object-cover opacity-75 transform scale-90";
+  const centerSlideStyle = "w-64 h-64 object-cover transform scale-105";
+
   return (
     <section
       ref={ref}
       className="relative w-full flex flex-col items-center justify-center px-4 lg:px-16 py-10 bg-gradient-to-b from-gray-100 to-gray-200 overflow-hidden"
     >
-      {/* Background Image */}
       <img
         className="absolute inset-0 w-full h-full object-cover opacity-10"
         src={galleryBg}
         alt="Gallery Background"
       />
 
-      {/* Main Content */}
       <motion.div
-        className="relative z-10 max-w-7xl w-full flex flex-col items-center lg:items-start text-center lg:text-left"
+        className="relative z-10 max-w-7xl w-full flex flex-col items-center text-center"
         variants={containerVariants}
         initial="hidden"
         animate={controls}
       >
-        {/* Heading Section */}
-        <div className="space-y-4 lg:space-y-2 mb-4 lg:mb-8">
+        <div className="space-y-4 mb-4 lg:mb-8">
           <motion.h1
             className="font-extrabold text-4xl lg:text-6xl text-gray-800"
-            variants={cardVariants}
+            variants={containerVariants}
           >
             Our POR'S
           </motion.h1>
         </div>
 
-        {/* Gallery Images */}
-        <motion.div
-          className="relative z-10 w-full max-w-7xl px-4 lg:px-0"
-          variants={containerVariants}
-          initial="hidden"
-          animate={controls}
-        >
-          {/* Desktop/Laptop View: Grid Layout with Cards */}
-          <div className="hidden lg:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-center">
-            {/* Image Cards */}
-            {galleryItems.map((item, index) => (
-              <motion.div
-                key={index}
-                className="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300"
-                variants={cardVariants}
-              >
-                <img
-                  src={item.img}
-                  alt={`Gallery Image ${index + 1}`}
-                  className="w-full h-80 object-cover" // Adjusted height for consistency
-                  loading="lazy"
-                />
-                <div className="p-6"> {/* Increased padding for balance */}
-                  <h2 className="text-xl font-semibold text-gray-700">{item.title}</h2>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+        {/* Carousel Slides */}
+        <motion.div className="relative w-full max-w-2xl flex justify-center items-center">
+          {/* Left/Back Image */}
+          <motion.div
+            key={`prev-${getDisplayedImages()[0].title}`}
+            className={`absolute left-0 ${smallSlideStyle}`}
+            variants={slideVariants}
+            initial="hidden"
+            animate="visible"
+            transition={{ duration: 0.5 }}
+          >
+            <img
+              src={getDisplayedImages()[0].img}
+              alt={getDisplayedImages()[0].title}
+              className="rounded-lg shadow-lg"
+            />
+          </motion.div>
 
-          {/* Mobile View: Horizontal Scroll with Cards */}
-          <div className="lg:hidden flex space-x-6 overflow-x-auto pb-6">
-            {galleryItems.map((item, index) => (
-              <motion.div
-                key={index}
-                className="flex-shrink-0 bg-white rounded-lg shadow-lg overflow-hidden w-64"
-                variants={cardVariants}
-              >
-                <img
-                  src={item.img}
-                  alt={`Gallery Image ${index + 1}`}
-                  className="w-full h-72 object-cover"
-                  loading="lazy"
-                />
-                <div className="p-4">
-                  <h2 className="text-lg font-semibold text-gray-700">{item.title}</h2>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          {/* Center/Main Image */}
+          <motion.div
+            key={`current-${getDisplayedImages()[1].title}`}
+            className={`relative z-10 ${centerSlideStyle}`}
+            variants={slideVariants}
+            initial="hidden"
+            animate="visible"
+            transition={{ duration: 0.5 }}
+          >
+            <img
+              src={getDisplayedImages()[1].img}
+              alt={getDisplayedImages()[1].title}
+              className="rounded-lg shadow-lg"
+            />
+            <div className="p-4">
+              <h2 className="text-lg font-semibold text-gray-700">
+                {getDisplayedImages()[1].title}
+              </h2>
+            </div>
+          </motion.div>
+
+          {/* Right/Back Image */}
+          <motion.div
+            key={`next-${getDisplayedImages()[2].title}`}
+            className={`absolute right-0 ${smallSlideStyle}`}
+            variants={slideVariants}
+            initial="hidden"
+            animate="visible"
+            transition={{ duration: 0.5 }}
+          >
+            <img
+              src={getDisplayedImages()[2].img}
+              alt={getDisplayedImages()[2].title}
+              className="rounded-lg shadow-lg"
+            />
+          </motion.div>
         </motion.div>
+
+        {/* Carousel Navigation */}
+        <button
+          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700 transition"
+          onClick={prevSlide}
+        >
+          <FaChevronLeft size={20} />
+        </button>
+        <button
+          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700 transition"
+          onClick={nextSlide}
+        >
+          <FaChevronRight size={20} />
+        </button>
       </motion.div>
 
-      {/* Action Button Positioned at Bottom Right */}
-      {/*
-      <motion.button
-        className="absolute bottom-20 right-6 z-20 bg-black text-white font-semibold text-lg lg:text-xl py-2 px-6 rounded-full shadow-md hover:bg-gray-800 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
-        variants={buttonVariants}
-        initial="hidden"
-        animate={controls}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        onClick={() => window.open("/", "_blank")} // Open the link in a new tab
-      >
-        View Past POR's
-      </motion.button>
-      */}
-      {/* Decorative Element - Visible on Large Screens */}
       <motion.img
         src={decorativeElement}
         alt="Decorative Element"
         className="hidden lg:block absolute top-4 right-4 w-20 lg:w-28"
-        variants={cardVariants}
+        variants={containerVariants}
         initial={{ opacity: 0, x: 100 }}
         animate={controls}
         transition={{ delay: 0.3 }}
       />
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
     </section>
   );
 }

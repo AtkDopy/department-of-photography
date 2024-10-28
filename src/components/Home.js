@@ -8,6 +8,7 @@ import React from "react";
 function Home() {
   return (
     <div>
+      
       <Hero />
       <About />
       <Por />
