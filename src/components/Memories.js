@@ -6,7 +6,7 @@ import highlight from "../assets/Highlight_05.svg";
 import { BsArrowDownRightCircleFill } from "react-icons/bs";
 
 function Memories() {
-  // Hook for detecting if the section is in view
+  // Hook for detecting if section is in view
   const { ref, inView } = useInView({
     triggerOnce: true, // Triggers animation only once
     threshold: 0.2,    // 20% of the section must be in view to trigger
