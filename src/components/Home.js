@@ -3,6 +3,7 @@ import Gallery from "./Gallery";
 import About from "./Memories";
 import Por from "./Por";
 
+
 import React from "react";
 
 function Home() {
@@ -13,6 +14,7 @@ function Home() {
       <About />
       <Por />
       <Gallery />
+
     </div>
   );
 }

@@ -83,9 +83,9 @@ function BookingForm() {
         onSubmit={handleSubmit}
       >
         <br />
-        <br />
+        
         <h2 className="text-3xl font-extrabold text-center text-gray-800 mb-6">
-          Request our Professional Photography Coverage for your Event
+          Request our Photography Coverage for your Event
         </h2>
 
         <input

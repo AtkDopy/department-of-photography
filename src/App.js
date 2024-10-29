@@ -6,6 +6,7 @@ import Pearl from "./components/Pearl";
 import Arena from "./components/Arena";
 import Events from "./components/Events";
 import Booking from "./components/Booking";
+import Footer from "./components/footer";
 import PhotoGallery from "./components/PhotoGallery";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -23,6 +24,7 @@ function App() {
           <Route path="/events" element={<Events />} />
           <Route path="/booking" element={<Booking />} />
         </Routes>
+        <Footer />
       </Router>
       {/* <PhotoGallery /> */}
     </>
