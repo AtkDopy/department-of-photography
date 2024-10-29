@@ -20,10 +20,10 @@ function Por() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const galleryItems = [
-    { img: img1, title: "Gautam Gandhi (StuCCAn)" },
-    { img: img2, title: "Rahul Sharma (CoSSAcn)" },
-    { img: img3, title: "Atharva Wasade (CoStAAn)" },
-    { img: img4, title: "Arunika Srivastava (Design & Media Head)" },
+    { img: img2, title: "Rahul Sharma", subtitle: "CoSSAcn" },
+    { img: img1, title: "Gautam Gandhi", subtitle: "StuCCAn" },
+    { img: img3, title: "Atharva Wasade", subtitle: "CoStAAn" },
+    { img: img4, title: "Arunika Srivastava", subtitle: "Design & Media Head" },
   ];
 
   useEffect(() => {
@@ -63,8 +63,6 @@ function Por() {
     visible: { opacity: 1, scale: 1 },
   };
 
-  const slideStyle = "w-64 h-64 object-cover transform scale-105";
-
   return (
     <section
       ref={ref}
@@ -98,7 +96,7 @@ function Por() {
             {/* Center/Main Image */}
             <motion.div
               key={`current-${galleryItems[currentIndex].title}`}
-              className={`relative z-10 ${slideStyle}`}
+              className="relative z-10 w-80 h-80 object-cover transform scale-105"
               variants={slideVariants}
               initial="hidden"
               animate="visible"
@@ -107,12 +105,15 @@ function Por() {
               <img
                 src={galleryItems[currentIndex].img}
                 alt={galleryItems[currentIndex].title}
-                className="rounded-lg shadow-lg"
+                className="rounded-lg shadow-lg w-full h-full object-cover"
               />
               <div className="p-4">
                 <h2 className="text-lg font-semibold text-gray-700">
                   {galleryItems[currentIndex].title}
                 </h2>
+                <p className="text-blue-600 text-sm">
+                  {galleryItems[currentIndex].subtitle}
+                </p>
               </div>
             </motion.div>
 
@@ -136,7 +137,7 @@ function Por() {
             {galleryItems.map((item, index) => (
               <motion.div
                 key={index}
-                className="w-40 h-40 object-cover rounded-lg shadow-lg"
+                className="w-44 h-44 md:w-48 md:h-48 object-cover rounded-lg shadow-lg"
                 variants={slideVariants}
               >
                 <img
@@ -145,6 +146,7 @@ function Por() {
                   className="w-full h-full object-cover rounded-lg shadow-lg"
                 />
                 <h2 className="mt-2 text-lg font-semibold text-gray-700">{item.title}</h2>
+                <p className="text-blue-600 text-sm">{item.subtitle}</p>
               </motion.div>
             ))}
           </div>
@@ -160,12 +162,10 @@ function Por() {
         animate={controls}
         transition={{ delay: 0.3 }}
       />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+      <br></br>
+      <br></br>
     </section>
+  
   );
 }
 

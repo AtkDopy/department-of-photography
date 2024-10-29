@@ -31,6 +31,10 @@ const Navbar = () => {
     setIsMobileMenuOpen(false);
   }, [location]);
 
+  // Define a helper function to add the active class if the path matches
+  const getLinkClass = (path) =>
+    location.pathname === path ? "text-blue-500" : "hover:text-gray-600 transition-colors duration-200";
+
   return (
     <div className="fixed w-full z-50 bg-white shadow-md">
       <div className="flex items-center justify-between py-4 px-4 md:px-8">
@@ -41,15 +45,15 @@ const Navbar = () => {
 
         {/* Navigation Links - Visible on mobile, hidden on desktop */}
         <div className="flex md:hidden font-medium text-base lg:text-lg gap-3 md:gap-6 text-black">
-          <Link to="/photogallery" className="hover:text-gray-600 transition-colors duration-200">
+          <Link to="/photogallery" className={getLinkClass("/photogallery")}>
             GALLERY
           </Link>
-          <Link to="/events" className="hover:text-gray-600 transition-colors duration-200">
+          <Link to="/events" className={getLinkClass("/events")}>
             EVENTS
           </Link>
           <div className="relative" ref={dropdownRef}>
             <button
-              className="flex items-center hover:text-gray-600 transition-colors duration-200"
+              className={`flex items-center ${getLinkClass("")}`}
               onClick={toggleDropdown}
             >
               FESTS <MdOutlineKeyboardArrowDown />
@@ -58,21 +62,21 @@ const Navbar = () => {
               <div className="absolute bg-white shadow-lg mt-2 rounded-md z-50 border border-gray-200 w-32">
                 <Link
                   to="/atmos"
-                  className="block px-4 py-2 text-sm hover:bg-gray-200 transition-colors duration-200 rounded-md"
+                  className={`block px-4 py-2 text-sm ${getLinkClass("/atmos")}`}
                   onClick={closeDropdown}
                 >
                   ATMOS
                 </Link>
                 <Link
                   to="/arena"
-                  className="block px-4 py-2 text-sm hover:bg-gray-200 transition-colors duration-200 rounded-md"
+                  className={`block px-4 py-2 text-sm ${getLinkClass("/arena")}`}
                   onClick={closeDropdown}
                 >
                   ARENA
                 </Link>
                 <Link
                   to="/pearl"
-                  className="block px-4 py-2 text-sm hover:bg-gray-200 transition-colors duration-200 rounded-md"
+                  className={`block px-4 py-2 text-sm ${getLinkClass("/pearl")}`}
                   onClick={closeDropdown}
                 >
                   PEARL
@@ -80,7 +84,7 @@ const Navbar = () => {
               </div>
             )}
           </div>
-          <Link to="/booking" className="hover:text-gray-600 transition-colors duration-200">
+          <Link to="/booking" className={getLinkClass("/booking")}>
             EVENT COVERAGE
           </Link>
         </div>
@@ -118,14 +122,14 @@ const Navbar = () => {
         <div className="px-4 py-2 bg-white border-t border-gray-100">
           <Link
             to="/photogallery"
-            className="block py-2 text-base font-medium hover:text-gray-600"
+            className={`block py-2 text-base font-medium ${getLinkClass("/photogallery")}`}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             GALLERY
           </Link>
           <Link
             to="/events"
-            className="block py-2 text-base font-medium hover:text-gray-600"
+            className={`block py-2 text-base font-medium ${getLinkClass("/events")}`}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             EVENTS
@@ -140,21 +144,21 @@ const Navbar = () => {
             <div className={`pl-4 mt-1 space-y-2 ${isDropdownOpen ? 'block' : 'hidden'}`}>
               <Link
                 to="/atmos"
-                className="block py-1 hover:text-gray-600"
+                className={`block py-1 ${getLinkClass("/atmos")}`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 ATMOS
               </Link>
               <Link
                 to="/arena"
-                className="block py-1 hover:text-gray-600"
+                className={`block py-1 ${getLinkClass("/arena")}`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 ARENA
               </Link>
               <Link
                 to="/pearl"
-                className="block py-1 hover:text-gray-600"
+                className={`block py-1 ${getLinkClass("/pearl")}`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 PEARL
@@ -163,7 +167,7 @@ const Navbar = () => {
           </div>
           <Link
             to="/booking"
-            className="block py-2 text-base font-medium hover:text-gray-600"
+            className={`block py-2 text-base font-medium ${getLinkClass("/booking")}`}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             EVENT COVERAGE
