@@ -38,9 +38,6 @@ function Navbar() {
 
       {/* Navigation Links */}
       <div className="font-medium text-lg md:text-base flex gap-6 md:gap-3 text-black">
-        <Link to="/booking" className="hover:text-gray-600 transition-colors duration-200">
-          BOOKING
-        </Link>
         <Link to="/photogallery" className="hover:text-gray-600 transition-colors duration-200">
           GALLERY
         </Link>
@@ -80,6 +77,9 @@ function Navbar() {
             </div>
           )}
         </div>
+        <Link to="/booking" className="hover:text-gray-600 transition-colors duration-200">
+          EVENT COVERAGE
+        </Link>
       </div>
 
       {/* "Let's Connect" Button */}

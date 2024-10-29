@@ -49,16 +49,6 @@ function Por() {
     );
   };
 
-  const getDisplayedImages = () => {
-    const prevIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
-    const nextIndex = (currentIndex + 1) % galleryItems.length;
-    return [
-      galleryItems[prevIndex],
-      galleryItems[currentIndex],
-      galleryItems[nextIndex],
-    ];
-  };
-
   const containerVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
@@ -73,8 +63,7 @@ function Por() {
     visible: { opacity: 1, scale: 1 },
   };
 
-  const smallSlideStyle = "w-40 h-40 object-cover opacity-75 transform scale-90";
-  const centerSlideStyle = "w-64 h-64 object-cover transform scale-105";
+  const slideStyle = "w-64 h-64 object-cover transform scale-105";
 
   return (
     <section
@@ -102,75 +91,64 @@ function Por() {
           </motion.h1>
         </div>
 
-        {/* Carousel Slides */}
+        {/* Display single image with carousel on desktop and all images on mobile */}
         <motion.div className="relative w-full max-w-2xl flex justify-center items-center">
-          {/* Left/Back Image */}
-          <motion.div
-            key={`prev-${getDisplayedImages()[0].title}`}
-            className={`absolute left-0 ${smallSlideStyle}`}
-            variants={slideVariants}
-            initial="hidden"
-            animate="visible"
-            transition={{ duration: 0.5 }}
-          >
-            <img
-              src={getDisplayedImages()[0].img}
-              alt={getDisplayedImages()[0].title}
-              className="rounded-lg shadow-lg"
-            />
-          </motion.div>
+          {/* Single Image Carousel on Desktop */}
+          <div className="hidden lg:flex lg:justify-center lg:items-center">
+            {/* Center/Main Image */}
+            <motion.div
+              key={`current-${galleryItems[currentIndex].title}`}
+              className={`relative z-10 ${slideStyle}`}
+              variants={slideVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 0.5 }}
+            >
+              <img
+                src={galleryItems[currentIndex].img}
+                alt={galleryItems[currentIndex].title}
+                className="rounded-lg shadow-lg"
+              />
+              <div className="p-4">
+                <h2 className="text-lg font-semibold text-gray-700">
+                  {galleryItems[currentIndex].title}
+                </h2>
+              </div>
+            </motion.div>
 
-          {/* Center/Main Image */}
-          <motion.div
-            key={`current-${getDisplayedImages()[1].title}`}
-            className={`relative z-10 ${centerSlideStyle}`}
-            variants={slideVariants}
-            initial="hidden"
-            animate="visible"
-            transition={{ duration: 0.5 }}
-          >
-            <img
-              src={getDisplayedImages()[1].img}
-              alt={getDisplayedImages()[1].title}
-              className="rounded-lg shadow-lg"
-            />
-            <div className="p-4">
-              <h2 className="text-lg font-semibold text-gray-700">
-                {getDisplayedImages()[1].title}
-              </h2>
-            </div>
-          </motion.div>
+            {/* Carousel Navigation for Desktop */}
+            <button
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700 transition"
+              onClick={prevSlide}
+            >
+              <FaChevronLeft size={20} />
+            </button>
+            <button
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700 transition"
+              onClick={nextSlide}
+            >
+              <FaChevronRight size={20} />
+            </button>
+          </div>
 
-          {/* Right/Back Image */}
-          <motion.div
-            key={`next-${getDisplayedImages()[2].title}`}
-            className={`absolute right-0 ${smallSlideStyle}`}
-            variants={slideVariants}
-            initial="hidden"
-            animate="visible"
-            transition={{ duration: 0.5 }}
-          >
-            <img
-              src={getDisplayedImages()[2].img}
-              alt={getDisplayedImages()[2].title}
-              className="rounded-lg shadow-lg"
-            />
-          </motion.div>
+          {/* All Images in Row on Mobile */}
+          <div className="flex lg:hidden space-x-4">
+            {galleryItems.map((item, index) => (
+              <motion.div
+                key={index}
+                className="w-40 h-40 object-cover rounded-lg shadow-lg"
+                variants={slideVariants}
+              >
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  className="w-full h-full object-cover rounded-lg shadow-lg"
+                />
+                <h2 className="mt-2 text-lg font-semibold text-gray-700">{item.title}</h2>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
-
-        {/* Carousel Navigation */}
-        <button
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700 transition"
-          onClick={prevSlide}
-        >
-          <FaChevronLeft size={20} />
-        </button>
-        <button
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700 transition"
-          onClick={nextSlide}
-        >
-          <FaChevronRight size={20} />
-        </button>
       </motion.div>
 
       <motion.img
@@ -182,11 +160,11 @@ function Por() {
         animate={controls}
         transition={{ delay: 0.3 }}
       />
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
     </section>
   );
 }

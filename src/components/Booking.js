@@ -85,7 +85,7 @@ function BookingForm() {
         <br />
         <br />
         <h2 className="text-3xl font-extrabold text-center text-gray-800 mb-6">
-          Reserve Our Photography Services
+          Request our Professional Photography Coverage for your Event
         </h2>
 
         <input
