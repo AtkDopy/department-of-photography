@@ -8,7 +8,6 @@ const Navbar = () => {
   const [isDesktopMenuOpen, setIsDesktopMenuOpen] = useState(false);
   const [isDesktopDropdownOpen, setIsDesktopDropdownOpen] = useState(false);
   const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
-  const dropdownRef = useRef(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -27,7 +26,7 @@ const Navbar = () => {
       <div className="flex items-center justify-between py-4 px-4 md:px-8">
         {/* Logo */}
         <Link to="/" className="cursor-pointer">
-        <img className="w-20 sm:w-24" src={img1} alt="Logo" />
+          <img className="w-20 sm:w-24" src={img1} alt="Logo" />
         </Link>
 
         {/* Hamburger Menu Button for Desktop */}
@@ -41,7 +40,7 @@ const Navbar = () => {
           <span className={`block w-6 h-0.5 bg-black transition-all duration-300 ${isDesktopMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
         </button>
 
-        {/* Mobile Navigation (Visible by Default) */}
+        {/* Mobile Navigation */}
         <div className="flex md:hidden items-center space-x-6">
           <Link to="/photogallery" className={getLinkClass("/photogallery")}>
             GALLERY
@@ -49,6 +48,43 @@ const Navbar = () => {
           <Link to="/events" className={getLinkClass("/events")}>
             EVENTS
           </Link>
+
+          {/* Mobile Fests Dropdown */}
+          <div className="relative">
+            <button
+              className="flex items-center font-medium"
+              onClick={() => setIsMobileDropdownOpen(!isMobileDropdownOpen)}
+            >
+              FESTS
+              <MdOutlineKeyboardArrowDown className={`ml-1 transition-transform duration-200 ${isMobileDropdownOpen ? 'rotate-180' : ''}`} />
+            </button>
+            {isMobileDropdownOpen && (
+              <div className="absolute left-0 mt-2 bg-white shadow-lg rounded-lg p-2 w-32">
+                <Link
+                  to="/atmos"
+                  className="block py-2 text-sm hover:text-gray-600"
+                  onClick={() => setIsMobileDropdownOpen(false)}
+                >
+                  ATMOS
+                </Link>
+                <Link
+                  to="/arena"
+                  className="block py-2 text-sm hover:text-gray-600"
+                  onClick={() => setIsMobileDropdownOpen(false)}
+                >
+                  ARENA
+                </Link>
+                <Link
+                  to="/pearl"
+                  className="block py-2 text-sm hover:text-gray-600"
+                  onClick={() => setIsMobileDropdownOpen(false)}
+                >
+                  PEARL
+                </Link>
+              </div>
+            )}
+          </div>
+
           <Link to="/booking" className={getLinkClass("/booking")}>
             EVENT COVERAGE
           </Link>
@@ -84,6 +120,7 @@ const Navbar = () => {
           >
             EVENTS
           </Link>
+
           {/* Desktop Fests Dropdown */}
           <div className="py-2">
             <button
@@ -126,6 +163,7 @@ const Navbar = () => {
               </Link>
             </div>
           </div>
+
           <Link
             to="/booking"
             className={`block py-2 text-base font-medium ${getLinkClass("/booking")}`}
