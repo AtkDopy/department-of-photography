@@ -6,7 +6,7 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 import galleryBg from "../assets/gallery/gallerybg.svg";
 import img1 from "../assets/por122.jpg";
-import img2 from "../assets/por222.JPG";
+import img2 from "../assets/por22.jpg";
 import img3 from "../assets/por322.png";
 import img4 from "../assets/por422.jpg";
 import decorativeElement from "../assets/gallery/02.svg";

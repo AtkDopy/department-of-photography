@@ -5,7 +5,13 @@ const Footer = () => {
     <footer className="w-full bg-white shadow-md mt-auto">
       <div className="container mx-auto py-4 px-8">
         <p className="text-center text-black font-medium text-sm md:text-base">
-          Copyright © DoPY BITS Pilani Hyderabad Campus {new Date().getFullYear()}
+          © DoPY BITS Pilani Hyderabad Campus {new Date().getFullYear()} | 
+          <a 
+            href="mailto:your-email@example.com" 
+            className="text-blue-500 hover:underline ml-1"
+          >
+            dopy@hyderabad.bits-pilani.ac.in
+          </a>
         </p>
       </div>
     </footer>

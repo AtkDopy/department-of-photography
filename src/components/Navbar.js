@@ -1,165 +1,126 @@
 import { useState, useRef, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import logo from "../assets/logo.svg";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { Link } from "react-router-dom";
+import img1 from "../assets/logo.svg";
 
 const Navbar = () => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDesktopMenuOpen, setIsDesktopMenuOpen] = useState(false);
+  const [isDesktopDropdownOpen, setIsDesktopDropdownOpen] = useState(false);
+  const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
   const location = useLocation();
 
-  const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
-  const closeDropdown = () => setIsDropdownOpen(false);
-  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
-
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        closeDropdown();
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
-  useEffect(() => {
+    setIsDesktopDropdownOpen(false);
+    setIsDesktopMenuOpen(false);
+    setIsMobileDropdownOpen(false);
     window.scrollTo(0, 0);
-    setIsMobileMenuOpen(false);
   }, [location]);
 
-  // Define a helper function to add the active class if the path matches
   const getLinkClass = (path) =>
     location.pathname === path ? "text-blue-500" : "hover:text-gray-600 transition-colors duration-200";
 
   return (
-    <div className="fixed w-full z-50 bg-white shadow-md">
+    <nav className="fixed w-full z-50 bg-white shadow-md">
+      {/* Main Navigation Bar */}
       <div className="flex items-center justify-between py-4 px-4 md:px-8">
         {/* Logo */}
         <Link to="/" className="cursor-pointer">
-          <img className="w-20 sm:w-24" src={logo} alt="Logo" />
+        <img className="w-20 sm:w-24" src={img1} alt="Logo" />
         </Link>
 
-        {/* Navigation Links - Visible on mobile, hidden on desktop */}
-        <div className="flex md:hidden font-medium text-base lg:text-lg gap-3 md:gap-6 text-black">
+        {/* Hamburger Menu Button for Desktop */}
+        <button
+          className="hidden md:flex flex-col justify-center items-center gap-1.5"
+          onClick={() => setIsDesktopMenuOpen(!isDesktopMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          <span className={`block w-6 h-0.5 bg-black transition-all duration-300 ${isDesktopMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+          <span className={`block w-6 h-0.5 bg-black transition-all duration-300 ${isDesktopMenuOpen ? 'opacity-0' : ''}`} />
+          <span className={`block w-6 h-0.5 bg-black transition-all duration-300 ${isDesktopMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+        </button>
+
+        {/* Mobile Navigation (Visible by Default) */}
+        <div className="flex md:hidden items-center space-x-6">
           <Link to="/photogallery" className={getLinkClass("/photogallery")}>
             GALLERY
           </Link>
           <Link to="/events" className={getLinkClass("/events")}>
             EVENTS
           </Link>
-          <div className="relative" ref={dropdownRef}>
-            <button
-              className={`flex items-center ${getLinkClass("")}`}
-              onClick={toggleDropdown}
-            >
-              FESTS <MdOutlineKeyboardArrowDown />
-            </button>
-            {isDropdownOpen && (
-              <div className="absolute bg-white shadow-lg mt-2 rounded-md z-50 border border-gray-200 w-32">
-                <Link
-                  to="/atmos"
-                  className={`block px-4 py-2 text-sm ${getLinkClass("/atmos")}`}
-                  onClick={closeDropdown}
-                >
-                  ATMOS
-                </Link>
-                <Link
-                  to="/arena"
-                  className={`block px-4 py-2 text-sm ${getLinkClass("/arena")}`}
-                  onClick={closeDropdown}
-                >
-                  ARENA
-                </Link>
-                <Link
-                  to="/pearl"
-                  className={`block px-4 py-2 text-sm ${getLinkClass("/pearl")}`}
-                  onClick={closeDropdown}
-                >
-                  PEARL
-                </Link>
-              </div>
-            )}
-          </div>
           <Link to="/booking" className={getLinkClass("/booking")}>
             EVENT COVERAGE
           </Link>
-        </div>
-
-        <div className="flex items-center gap-4">
-          {/* Connect Button - Visible on mobile */}
           <a
             href="https://www.instagram.com/dopy.bitshyd?igsh=cjNuMmlwbXg2aXFv"
-            className="flex md:hidden font-medium text-sm lg:text-lg border-black border-2 py-2 px-4 rounded-full hover:bg-black hover:text-white transition-colors duration-200"
+            className="font-medium text-sm border-black border-2 py-2 px-4 rounded-full hover:bg-black hover:text-white transition-colors duration-200"
             target="_blank"
             rel="noopener noreferrer"
           >
             LET'S CONNECT
           </a>
-          
-          {/* Hamburger Menu Button - Visible on desktop only */}
-          <button
-            className="hidden md:flex flex-col justify-center items-center gap-1.5"
-            onClick={toggleMobileMenu}
-            aria-label="Toggle menu"
-          >
-            <span className={`block w-6 h-0.5 bg-black transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-            <span className={`block w-6 h-0.5 bg-black transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`} />
-            <span className={`block w-6 h-0.5 bg-black transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
-          </button>
         </div>
       </div>
 
-      {/* Desktop Menu - Only visible on desktop when menu is open */}
+      {/* Desktop Menu */}
       <div
-        className={`hidden md:block overflow-hidden transition-all duration-300 ease-in-out ${
-          isMobileMenuOpen ? 'max-h-96' : 'max-h-0'
+        className={`hidden md:flex flex-col transition-all duration-300 ease-in-out ${
+          isDesktopMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
         }`}
       >
         <div className="px-4 py-2 bg-white border-t border-gray-100">
           <Link
             to="/photogallery"
             className={`block py-2 text-base font-medium ${getLinkClass("/photogallery")}`}
-            onClick={() => setIsMobileMenuOpen(false)}
+            onClick={() => setIsDesktopMenuOpen(false)}
           >
             GALLERY
           </Link>
           <Link
             to="/events"
             className={`block py-2 text-base font-medium ${getLinkClass("/events")}`}
-            onClick={() => setIsMobileMenuOpen(false)}
+            onClick={() => setIsDesktopMenuOpen(false)}
           >
             EVENTS
           </Link>
+          {/* Desktop Fests Dropdown */}
           <div className="py-2">
             <button
-              className="flex items-center text-base font-medium hover:text-gray-600"
-              onClick={toggleDropdown}
+              className="flex items-center text-base font-medium w-full justify-between"
+              onClick={() => setIsDesktopDropdownOpen(!isDesktopDropdownOpen)}
             >
-              FESTS <MdOutlineKeyboardArrowDown />
+              FESTS 
+              <MdOutlineKeyboardArrowDown className={`ml-1 ${isDesktopDropdownOpen ? 'rotate-180' : ''} transition-transform duration-200`} />
             </button>
-            <div className={`pl-4 mt-1 space-y-2 ${isDropdownOpen ? 'block' : 'hidden'}`}>
+            <div className={`pl-4 mt-1 space-y-2 ${isDesktopDropdownOpen ? 'block' : 'hidden'}`}>
               <Link
                 to="/atmos"
-                className={`block py-1 ${getLinkClass("/atmos")}`}
-                onClick={() => setIsMobileMenuOpen(false)}
+                className="block py-2 hover:text-gray-600"
+                onClick={() => {
+                  setIsDesktopDropdownOpen(false);
+                  setIsDesktopMenuOpen(false);
+                }}
               >
                 ATMOS
               </Link>
               <Link
                 to="/arena"
-                className={`block py-1 ${getLinkClass("/arena")}`}
-                onClick={() => setIsMobileMenuOpen(false)}
+                className="block py-2 hover:text-gray-600"
+                onClick={() => {
+                  setIsDesktopDropdownOpen(false);
+                  setIsDesktopMenuOpen(false);
+                }}
               >
                 ARENA
               </Link>
               <Link
                 to="/pearl"
-                className={`block py-1 ${getLinkClass("/pearl")}`}
-                onClick={() => setIsMobileMenuOpen(false)}
+                className="block py-2 hover:text-gray-600"
+                onClick={() => {
+                  setIsDesktopDropdownOpen(false);
+                  setIsDesktopMenuOpen(false);
+                }}
               >
                 PEARL
               </Link>
@@ -168,7 +129,7 @@ const Navbar = () => {
           <Link
             to="/booking"
             className={`block py-2 text-base font-medium ${getLinkClass("/booking")}`}
-            onClick={() => setIsMobileMenuOpen(false)}
+            onClick={() => setIsDesktopMenuOpen(false)}
           >
             EVENT COVERAGE
           </Link>
@@ -177,13 +138,13 @@ const Navbar = () => {
             className="block py-2 text-base font-medium hover:text-gray-600"
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => setIsMobileMenuOpen(false)}
+            onClick={() => setIsDesktopMenuOpen(false)}
           >
             LET'S CONNECT
           </a>
         </div>
       </div>
-    </div>
+    </nav>
   );
 };
 
