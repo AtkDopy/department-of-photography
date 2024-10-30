@@ -100,7 +100,7 @@ const NavigationPage = () => {
     Archive
   </h1>
   <p className="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
-    Journey through our memorable festivals and events throughout the years
+    Journey through our memorable fests and events throughout the years
   </p>
 </div>
       {/* Timeline Container */}
