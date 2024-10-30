@@ -45,9 +45,6 @@ const Navbar = () => {
           <Link to="/photogallery" className={getLinkClass("/photogallery")}>
             GALLERY
           </Link>
-          <Link to="/archives" className={getLinkClass("/archives")}>
-            ARCHIVE
-          </Link>
           <Link to="/events" className={getLinkClass("/events")}>
             EVENTS
           </Link>
@@ -91,6 +88,9 @@ const Navbar = () => {
           <Link to="/booking" className={getLinkClass("/booking")}>
             EVENT COVERAGE
           </Link>
+          <Link to="/archives" className={getLinkClass("/archives")}>
+            ARCHIVE
+          </Link>
           <a
             href="https://www.instagram.com/dopy.bitshyd?igsh=cjNuMmlwbXg2aXFv"
             className="font-medium text-sm border-black border-2 py-2 px-4 rounded-full hover:bg-black hover:text-white transition-colors duration-200"
@@ -115,13 +115,6 @@ const Navbar = () => {
             onClick={() => setIsDesktopMenuOpen(false)}
           >
             GALLERY
-          </Link>
-          <Link
-            to="/archives"
-            className={`block py-2 text-base font-medium ${getLinkClass("/archives")}`}
-            onClick={() => setIsDesktopMenuOpen(false)}
-          >
-            ARCHIVE
           </Link>
           <Link
             to="/events"
@@ -180,6 +173,13 @@ const Navbar = () => {
             onClick={() => setIsDesktopMenuOpen(false)}
           >
             EVENT COVERAGE
+          </Link>
+          <Link
+            to="/archives"
+            className={`block py-2 text-base font-medium ${getLinkClass("/archives")}`}
+            onClick={() => setIsDesktopMenuOpen(false)}
+          >
+            ARCHIVE
           </Link>
           <a
             href="https://www.instagram.com/dopy.bitshyd?igsh=cjNuMmlwbXg2aXFv"
