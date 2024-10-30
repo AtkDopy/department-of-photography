@@ -45,6 +45,9 @@ const Navbar = () => {
           <Link to="/photogallery" className={getLinkClass("/photogallery")}>
             GALLERY
           </Link>
+          <Link to="/archives" className={getLinkClass("/archives")}>
+            ARCHIVE
+          </Link>
           <Link to="/events" className={getLinkClass("/events")}>
             EVENTS
           </Link>
@@ -112,6 +115,13 @@ const Navbar = () => {
             onClick={() => setIsDesktopMenuOpen(false)}
           >
             GALLERY
+          </Link>
+          <Link
+            to="/archives"
+            className={`block py-2 text-base font-medium ${getLinkClass("/archives")}`}
+            onClick={() => setIsDesktopMenuOpen(false)}
+          >
+            ARCHIVE
           </Link>
           <Link
             to="/events"
