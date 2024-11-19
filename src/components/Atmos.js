@@ -1,25 +1,25 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom"; // Import Link
-import img1 from "../assets/atmos/1.jpg";
-import img2 from "../assets/atmos/2.JPG";
-import img3 from "../assets/atmos/3.jpg";
-import img4 from "../assets/atmos/4.jpg";
-import img5 from "../assets/atmos/5.jpg";
-import img6 from "../assets/atmos/6.jpg";
-import img7 from "../assets/atmos/7.jpg";
-import img8 from "../assets/atmos/8.jpg";
-import img9 from "../assets/atmos/9.JPG";
-import img10 from "../assets/atmos/10.JPG";
-import img11 from "../assets/atmos/11.JPG";
-import img12 from "../assets/atmos/12.jpg";
-import img13 from "../assets/atmos/13.jpg";
-import img14 from "../assets/atmos/14.JPG";
-import img15 from "../assets/atmos/15.JPG";
-import img16 from "../assets/atmos/16.jpg";
-import img17 from "../assets/atmos/17.JPG";
-import img18 from "../assets/atmos/18.JPG";
-import img19 from "../assets/atmos/19.jpg";
-import img20 from "../assets/atmos/20.jpg";
+import img1 from "../assets/atmos/img1.JPG";
+import img2 from "../assets/atmos/img2.jpg";
+import img3 from "../assets/atmos/img3.JPG";
+import img4 from "../assets/atmos/img4.JPG";
+import img5 from "../assets/atmos/img5.jpg";
+import img6 from "../assets/atmos/img6.jpg";
+import img7 from "../assets/atmos/img7.JPG";
+import img8 from "../assets/atmos/img8.jpg";
+import img9 from "../assets/atmos/img9.jpg";
+import img10 from "../assets/atmos/img10.jpg";
+import img11 from "../assets/atmos/img11.jpg";
+import img12 from "../assets/atmos/img12.jpg";
+import img13 from "../assets/atmos/img13.JPG";
+import img14 from "../assets/atmos/img14.JPG";
+import img15 from "../assets/atmos/img15.jpg";
+import img16 from "../assets/atmos/img16.JPG";
+import img17 from "../assets/atmos/img17.jpg";
+import img18 from "../assets/atmos/img18.jpg";
+import img19 from "../assets/atmos/img19.jpg";
+import img20 from "../assets/atmos/img20.JPG";
 
 const images = [
   img1, img2, img3, img4, img5,
@@ -51,7 +51,7 @@ function Atmos() {
         <p className="text-lg text-gray-600 animate-fadeInUp">
           Technical Fest of BITS Hyderabad
         </p>
-        <Link to="https://drive.google.com/drive/folders/15UsgTnBFnIBCU9l7Q_G4LWe2LDEGSh9H?usp=sharing">
+        <Link to="https://drive.google.com/drive/folders/1PPPodjCBVn7Ht-s7pv5c6UuxMGcCDyQ6">
           <button className="mt-4 px-6 py-2 bg-gradient-to-r from-blue-500 to-teal-500 text-white text-lg font-semibold rounded-full shadow-md hover:shadow-lg hover:scale-105 transform transition duration-300 ease-in-out animate-fadeIn">
             View All
           </button>

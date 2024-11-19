@@ -4,9 +4,20 @@ import img1 from "../assets/archive/pearl.JPG";
 import img2 from "../assets/archive/arena.jpg";
 import img3 from "../assets/archive/atmos.jpg";
 import img4 from "../assets/archive/orbenovo.png";
+import img5 from "../assets/archive/atmos23.jpg";
 
 // Define sections by year, each with up to 3 events
 const sectionsByYear = [
+  {
+    year: "2023 - 24",
+    events: [
+      {
+        title: "Atmos 23",
+        link: "https://drive.google.com/drive/folders/15UsgTnBFnIBCU9l7Q_G4LWe2LDEGSh9H",
+        image: img5,
+      },
+    ],
+  },
   {
     year: "2022 - 23",
     events: [
