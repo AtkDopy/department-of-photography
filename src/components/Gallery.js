@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import img1 from "../assets/events/FreshersFair.jpg";
-import img2 from "../assets/atmos/1.jpg";
+import img2 from "../assets/atmos/img9.jpg";
 import img3 from "../assets/arena/9.JPG";
 import img4 from "../assets/pearl/1.jpg";
 
