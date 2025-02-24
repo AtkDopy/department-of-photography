@@ -51,7 +51,7 @@ function Arena() {
         <p className="text-lg text-gray-600 animate-fadeInUp">
           Sports Fest of BITS Hyderabad
         </p>
-        <Link to="https://drive.google.com/drive/folders/1VK6-v9q8RC-9dY83TSx99_XiITCjBKuM?usp=sharing">
+        <Link to="https://drive.google.com/drive/folders/1PJH63DRknENTO75g-M2NkWjicFRKp_wx?usp=drive_link">
           <button className="mt-4 px-6 py-2 bg-gradient-to-r from-blue-500 to-teal-500 text-white text-lg font-semibold rounded-full shadow-md hover:shadow-lg hover:scale-105 transform transition duration-300 ease-in-out animate-fadeIn">
             View All
           </button>
